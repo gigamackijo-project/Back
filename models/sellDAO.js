@@ -16,13 +16,13 @@ if (pool) console.log(`database connected...`);
 
 const sql = {
   createSellList: 'INSERT INTO sell(product_id, user_id) VALUES (?, ?)',
-  getSellList: `SELECT p.name, p.cost_price, p.sale_price, p.state, p.ex_date, p.barcode, p.like_count, p.sale, u.name as seller_name 
+  getSellList: `SELECT p.product_id, p.name, p.cost_price, p.sale_price, p.state, p.ex_date, p.barcode, p.like_count, p.sale, u.name as seller_name, p.imageName, p.imagePath
                 FROM sell s 
                 JOIN product p ON s.product_id = p.product_id 
                 JOIN user u ON s.user_id = u.user_id
                 WHERE s.user_id = ? `,
 
-  getBuyList: `SELECT p.name, p.cost_price, p.sale_price, p.state, p.ex_date, p.barcode, p.like_count, p.sale, u.name as seller_name 
+  getBuyList: `SELECT p.product_id, p.name, p.cost_price, p.sale_price, p.state, p.ex_date, p.barcode, p.like_count, p.sale, u.name as seller_name, p.imageName, p.imagePath
                FROM sell s 
                JOIN product p ON s.product_id = p.product_id 
                JOIN user u ON s.user_id = u.user_id

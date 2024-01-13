@@ -160,7 +160,10 @@ DROP TABLE IF EXISTS user;
 
 
 INSERT INTO user(name, nickname, email, password, updated_at, point, birthday, tel) 
-VALUES('홍길동', '길동닉', 'nolbu@company.com', 'abc123', '2023-12-22', 30000, '2023-12-22', '010-5412-3456');
+VALUES('홍길동', '길동닉', 'qwe@company.com', '123qwe', '2023-12-22', 30000, '2023-12-22', '010-5412-3456');
+
+INSERT INTO user(name, nickname, email, password, updated_at, point, birthday, tel) 
+VALUES('김철수', '철수닉네임', 'chulsu@company.com', 'qwe123', '2023-12-22', 30000, '2000-10-22', '010-1234-5678');
 
 INSERT INTO board(title, content, cnt, `created_at`, `updated_at`, user_id, board_no) 
 VALUES('제목', '정말어렵다 데이터베이스', 1, '2023-11-03', '2023-12-03', 1, 1);

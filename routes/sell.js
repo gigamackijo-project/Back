@@ -14,7 +14,7 @@ router.post('/createSellList', (req, res, next) => {
 });
 
 router.get('/getSellList', (req, res, next) => {
-  const data = req.body
+  const data = req.query
 
   sellDAO.getSellList(data.user_id, (resp) => {
     res.json(resp);
@@ -22,7 +22,7 @@ router.get('/getSellList', (req, res, next) => {
 });
 
 router.get('/getBuyList', (req, res, next) => {
-  const data = req.body
+  const data = req.query
 
   sellDAO.getBuyList(data.user_id, (resp) => {
     res.json(resp);
