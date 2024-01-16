@@ -75,24 +75,4 @@ router.put('/likeCount', async (req, res, next) => {
   });
 });
 
-
-// router.post('/uploadPhoto', upload.single('image'), async (req, res) => {
-//   try {
-//     const file = req.file;
-
-//     if (!file) {
-//       return res.status(400).json({ message: '이미지를 첨부하세요' });
-//     }
-
-//     const imagePath = `http://localhost:8000/uploads/${file.filename}`;
-//     const { product_id } = req.body;
-
-//     await productDAO.photo({ imagePath, imageName: file.filename, product_id }, (resp) => {
-//       res.status(resp.status).json(resp);
-//     });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ message: '이미지 업로드 실패', error: error });
-//   }
-// });
 module.exports = router;

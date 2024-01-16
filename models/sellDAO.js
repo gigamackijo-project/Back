@@ -27,7 +27,7 @@ const sql = {
                JOIN product p ON s.product_id = p.product_id 
                JOIN user u ON s.user_id = u.user_id
                WHERE s.user_id = ? AND p.state = '판매완료' `,
-  deleteSell: 'DELETE FROM sell WHERE sell_id = ?',
+  deleteSell: 'DELETE FROM sell WHERE product_id = ?',
 };
 
 const sellDAO = {
