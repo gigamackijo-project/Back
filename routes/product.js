@@ -67,10 +67,18 @@ router.put('/updateState', async (req, res, next) => {
   });
 });
 
-router.put('/likeCount', async (req, res, next) => {
-  const data = req.body;
+router.put('/likeCount/:productId', async (req, res, next) => {
+  const productId = req.params.productId;
 
-  productDAO.likeCount(data, (resp) => {
+  productDAO.likeCount(productId, (resp) => {
+    res.json(resp);
+  });
+});
+
+router.get('/likeList', async (req, res, next) => {
+  const data = req.query;
+
+  productDAO.likeList(data, (resp) => {
     res.json(resp);
   });
 });

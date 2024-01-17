@@ -21,6 +21,7 @@ const sql = {
   updateState: `UPDATE product SET state = '판매완료' WHERE product_id = ?`,
   likeCount: `UPDATE product SET like_count = like_count + 1 WHERE product_id = ?`,
   photo: `UPDATE product SET imageName = ?, imagePath = ? WHERE product_id = ?`,
+  likeList: 'SELECT * FROM product ORDER BY like_count DESC LIMIT 0, 3'
 };
 
 const productDAO = {
@@ -115,13 +116,13 @@ updateState: async (item, callback) => {
   }
 },
 
-likeCount: async (item, callback) => {
+likeCount: async (product_id, callback) => {
   let conn = null;
   try {
     conn = await pool.getConnection();
     conn.beginTransaction();
 
-    const [resp] = await conn.query(sql.likeCount, [item.product_id]);
+    const [resp] = await conn.query(sql.likeCount, [product_id]);
     conn.commit();
 
     callback({ status: 200, message: 'OK', data: resp });
@@ -147,6 +148,21 @@ photo: async (item, callback) => {
     }
   } catch (error) {
     callback({ status: 500, message: '상품 찾기 실패', error });
+  } finally {
+    if (conn !== null) conn.release();
+  }
+},
+
+likeList: async (product_id, callback) => {
+  let conn = null;
+  try {
+    conn = await pool.getConnection();
+
+    const [resp] = await conn.query(sql.likeList, [product_id]);
+
+    callback({ status: 200, message: 'OK', data: resp });
+  } catch (error) {
+    callback({ status: 500, message: '상품 목록 조회 실패', error });
   } finally {
     if (conn !== null) conn.release();
   }

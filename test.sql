@@ -258,7 +258,7 @@ DROP TABLE IF EXISTS user, sell, product, board, comment, wishlist;
 SELECT * from user;
 SELECT * from board;
 SELECT * from comment;
-SELECT * from product;
+  SELECT * from product;
 SELECT * from sell;
 SELECT * from wishlist;
 
@@ -302,5 +302,7 @@ INSERT INTO comment(boardId, userId, content) VALUES(4, 5, '세번째 게시물 
 
 INSERT INTO user(name, nickname, email, password, updated_at, birthday, tel) 
 VALUES('홍길동', '놀부닉', 'nolbu@company.com', 'abc123', '2023-12-22', '2023-12-22', '010-5412-3456');
+
+SELECT * FROM product ORDER BY like_count DESC LIMIT 0, 3;
 
 -- 수정
