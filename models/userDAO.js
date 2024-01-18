@@ -194,7 +194,7 @@ const userDAO = {
       const [updatedUser] = await conn.query(sql.userId, [user_id]);
       conn.commit();   
 
-      callback({ status: 200, message: 'OK', data: { name: updatedUser[0].name, email: updatedUser[0].email, id: updatedUser[0].user_id, nickname: updatedUser[0].nickname, point: updatedUser[0].point } });
+      callback({ status: 200, message: 'OK', data: { name: updatedUser[0].name, email: updatedUser[0].email, id: updatedUser[0].user_id, nickname: updatedUser[0].nickname, point: updatedUser[0].point, birthday: updatedUser[0].birthday ,tel: updatedUser[0].tel  } });
     } catch (error) {
       conn.rollback();
       callback({ status: 500, message: '포인트 업데이트 실패', error });
